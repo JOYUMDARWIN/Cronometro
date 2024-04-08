@@ -1,0 +1,81 @@
+main {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  border: 1px solid #fff;
+  color: #fff;
+  margin: 50px auto; /*para centrar el circulo*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /*para que aparezca arriba el contador y abajo los botones*/
+}
+
+/*seudo elemento al circulo*/
+.circle::before {
+  content: "";
+  border-radius: 50%;
+  z-index: -1; /*para que aparezca por debajo del circulo*/
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  left: calc(50% - 110px);
+  top: calc(50% - 110px);
+  background-color: #1d1d1d;
+}
+
+.seconds-sphere {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  left: calc(50% - 20px); /*para centrar la esfera segundera*/
+  top: calc(50% - 20px); /*para centrar la esfera segundera*/
+  animation: rotacion 60s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes rotacion {
+  from {
+    transform: rotate(-90deg) translateX(80px);
+  }
+  to {
+    transform: rotate(270deg) translateX(80px);
+  }
+}
+
+.buttons {
+  margin-top: 10px;
+  display: inline-flex;
+}
+
+.paused {
+  height: 20px;
+  border-width: 10px 0px 10px 20px;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-left: 20px;
+  border-color: transparent transparent transparent #fff;
+  transition: 100ms all ease;
+  will-change: border-width;
+  border-style: solid;
+}
+
+.running{
+  border-style: double;
+  border-width: 0 0 0 10px;
+}
+
+.stop {
+  background-color: #fff;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
